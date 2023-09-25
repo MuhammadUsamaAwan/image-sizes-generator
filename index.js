@@ -20,7 +20,7 @@ for (const file of files) {
   const ext = path.extname(file);
   const name = path.basename(file, ext);
   for (const size of sizes) {
-    const output = path.join(outputDir, `${name}_${size}${ext}`);
-    await sharp(path.join(inputDir, file)).resize(size, height).toFile(output);
+    const output = path.join(outputDir, `${name}_${size}.webp`);
+    await sharp(path.join(inputDir, file)).webp({ quality: 75, effort: 6 }).resize(size, height).toFile(output);
   }
 }
